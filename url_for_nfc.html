@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NFC JSON 자동 열기</title>
+</head>
+<body>
+    <h1>NFC 태그 스캔으로 JSON 파일 열기</h1>
+    <div id="json-content"></div>
+
+    <script>
+        // JSON 파일을 자동으로 불러오는 함수
+        function loadJSON(url) {
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    // JSON 데이터를 화면에 표시
+                    document.getElementById('json-content').innerText = JSON.stringify(data, null, 2);
+                })
+                .catch(error => console.error('JSON 로드 중 오류:', error));
+        }
+
+        // JSON 파일 URL
+        const jsonUrl = 'https://example.com/project_info.json';
+        
+        // JSON 파일 로드
+        loadJSON(jsonUrl);
+    </script>
+</body>
+</html>
